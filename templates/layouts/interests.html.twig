@@ -8,12 +8,12 @@
     {% for item in module.header.interests %}
     <div class="large-3 medium-3 small-6 columns {% if loop.last %}end{% endif %}">
       <div class="int_item">
-          {# Ikon megjelenítése #}
+          {# Ikon megjelenítése - FRISSÍTVE FontAwesome 6-ra (fa-solid) #}
           <div class="int_icon">
-            <i class="fa fa-{{ item.icon }}"></i>
+            <i class="fa-solid fa-{{ item.icon }}"></i>
           </div>
           
-          {# Címke: Támogatjuk a régi 'activity' és az új 'text' mezőt is #}
+          {# Címke #}
           <div class="int_text">
               {{ item.text|default(item.activity) }}
           </div>
