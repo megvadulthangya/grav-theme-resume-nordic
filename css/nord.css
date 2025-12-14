@@ -282,21 +282,28 @@ path[data-id="s0"] { /* Töltött rész */
 
 /* 2. SZPECIALITÁSOK (Specialities) JAVÍTÁSA */
 ul.special li i {
-    /* 1. BELSŐ IGAZÍTÁS (Az ikon legyen a kör közepén) */
+    /* 1. FLEXBOX: Hogy az ikon a kör közepén legyen */
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     
-    /* 2. KÜLSŐ IGAZÍTÁS (Maga a kör legyen a doboz közepén) - EZ HIÁNYZOTT! */
-    margin: 0 auto !important; 
+    /* 2. A "TEST" VISSZAADÁSA (Ez hiányzott!) */
+    /* Fix méretet adunk a körnek, hogy ne essen össze */
+    width: 6rem !important;   
+    height: 6rem !important;
+    border-radius: 50% !important; /* Hogy biztosan kör legyen */
+    
+    /* 3. POZICIONÁLÁS */
+    /* 0 auto = középre vízszintesen */
+    /* 1.5rem = alulra hagyunk helyet a kék pöttynek/vonalnak */
+    margin: 0 auto 1.5rem auto !important;
+    
+    /* 4. IKON MÉRETE (A körön belül) */
+    font-size: 3rem !important; 
     
     /* Nullázások */
     padding: 0 !important;
     line-height: 1 !important;
-    
-    /* 3. MÉRET (Specialities) */
-    /* Próbáld meg a 3rem-et. Ha túl nagy, vedd lejjebb 2.5rem-re */
-    font-size: 3rem !important; 
 }
 
 /* Biztonsági tartalék */
