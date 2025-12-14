@@ -1,6 +1,22 @@
-<div class="row footer">
-   <div class="large-12 small-12 medium-12 text-center ">
-    <div class="border text-center "></div>
-    <p class="copyright">Design by <a href="https://www.behance.net/fbaezb">Fernando Baez</a>. Coding & Implementation by <a href="http://www.getgrav.org">GRAV</a> team.</p>
-   </div>
+<div class="footer">
+    <div class="row">
+        <div class="large-12 columns text-center">
+            <div class="border"></div>
+            <p>
+                {# Ha van egyedi szöveg az adminban, azt írja ki, ha nincs, az alapértelmezettet #}
+                {% if theme_config.footer_text %}
+                    {{ theme_config.footer_text|raw }}
+                {% else %}
+                    Copyright &copy; {{ "now"|date("Y") }} <strong>{{ site.title }}</strong>.
+                {% endif %}
+                
+                <br>
+                
+                {# Ha nincs elrejtve a credit #}
+                {% if not theme_config.hide_credits %}
+                    <small>Powered by <a href="http://getgrav.org" target="_blank">Grav</a> & <a href="https://github.com/megvadulthangya/grav-theme-resume-nordic" target="_blank">Nord Resume</a>.</small>
+                {% endif %}
+            </p>
+        </div>
+    </div>
 </div>

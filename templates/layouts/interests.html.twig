@@ -4,11 +4,26 @@
   {{ module.content|raw }}
 
   <div class="row interests">
+    {# Végigmegyünk a modul headerjében definiált elemeken #}
     {% for item in module.header.interests %}
-    <div class="large-3 small-6 medium-3 columns {% if loop.last %}end{% endif %} {% if item.animation %}animated {{ item.animation }}{% endif %}">
-      <div class="int_icon">
-        <i class="fi-{{ item.icon }}"></i>
-        <div class="activity">{{ item.activity }}</div>
+    <div class="large-3 medium-3 small-6 columns {% if loop.last %}end{% endif %}">
+      <div class="int_item">
+          {# Ikon megjelenítése #}
+          <div class="int_icon">
+            <i class="fa fa-{{ item.icon }}"></i>
+          </div>
+          
+          {# Címke: Támogatjuk a régi 'activity' és az új 'text' mezőt is #}
+          <div class="int_text">
+              {{ item.text|default(item.activity) }}
+          </div>
+          
+          {# Leírás megjelenítése (ha van) #}
+          {% if item.description %}
+            <div class="int_desc" style="font-size: 0.9em; margin-top: 5px; color: var(--text-muted);">
+                {{ item.description|raw }}
+            </div>
+          {% endif %}
       </div>
     </div>
     {% endfor %}

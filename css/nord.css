@@ -1,0 +1,261 @@
+/* --- NORD THEME: AUTO LIGHT/DARK MODE --- */
+
+/* 1. NORD PALETTA DEFINÍCIÓ (Ezek a fix színek) */
+:root {
+    /* Polar Night (Sötét) */
+    --nord0: #2E3440;
+    --nord1: #3B4252;
+    --nord2: #434C5E;
+    --nord3: #4C566A;
+    /* Snow Storm (Világos) */
+    --nord4: #D8DEE9;
+    --nord5: #E5E9F0;
+    --nord6: #ECEFF4;
+    /* Frost (Kiemelések) */
+    --nord7: #8FBCBB;
+    --nord8: #88C0D0; /* Cián */
+    --nord9: #81A1C1; /* Kék */
+    --nord10: #5E81AC; /* Mélykék */
+    /* Aurora (Színes dolgok) */
+    --nord11: #BF616A; /* Piros */
+    --nord12: #D08770; /* Narancs */
+    --nord13: #EBCB8B; /* Sárga */
+    --nord14: #A3BE8C; /* Zöld */
+    --nord15: #B48EAD; /* Lila */ 
+}
+
+/* 2. SZEMANTIKUS VÁLTOZÓK (Itt történik a varázslat) */
+
+/* Alapértelmezett: VILÁGOS TÉMA (Nord Snow Storm) */
+:root {
+    --bg-page: var(--nord6);       /* Törtfehér háttér */
+    --bg-panel: var(--nord5);      /* Kicsit sötétebb fehér panelek */
+    --bg-element: var(--nord4);    /* Inaktív elemek */
+    --border-color: var(--nord4);  /* Szegélyek */
+    
+    --text-main: var(--nord1);     /* Sötétkék szöveg (hogy olvasható legyen fehéren) */
+    --text-muted: var(--nord2);    /* Halványabb sötét szöveg */
+    --text-heading: var(--nord0);  /* Legsötétebb kék címsorok */
+    
+    --accent-primary: var(--nord10); /* Mélykék linkek (jobban látszik fehéren) */
+    --accent-hover: var(--nord9);
+    --accent-decoration: var(--nord10); /* Vonalak, pöttyök */
+}
+
+/* SÖTÉT TÉMA (Nord Polar Night) - Csak akkor aktiválódik, ha a gép sötét */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-page: var(--nord0);       /* Mélysötét háttér */
+        --bg-panel: var(--nord1);      /* Kicsit világosabb sötét panelek */
+        --bg-element: var(--nord2);
+        --border-color: var(--nord3);
+        
+        --text-main: var(--nord4);     /* Világosszürke szöveg */
+        --text-muted: var(--nord4);
+        --text-heading: var(--nord6);  /* Hófehér címsorok */
+        
+        --accent-primary: var(--nord8); /* Cián linkek (jól világít sötétben) */
+        --accent-hover: var(--nord9);
+        --accent-decoration: var(--nord8);
+    }
+}
+
+/* 3. A SZABÁLYOK (Már nem színeket, hanem változókat használnak) */
+
+/* ALAPOK */
+body {
+    background-color: var(--bg-page) !important;
+    color: var(--text-main) !important;
+    font-family: 'Open Sans', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Finom átmenet */
+}
+
+/* Linkek */
+a, .website a {
+    color: var(--accent-primary) !important;
+    transition: color 0.2s;
+}
+a:hover {
+    color: var(--accent-hover) !important;
+}
+
+/* Címsorok */
+h1, h2, h3, h4, h5, h6,
+.title, .edu .topic, .role, .lang_name {
+    color: var(--text-heading) !important;
+}
+
+/* Szövegtörzs */
+p, .light, .light2, .name, .desc, .place, .company, .date, .activity {
+    color: var(--text-main) !important;
+}
+.italic, .lang_level {
+    color: var(--accent-hover) !important;
+}
+
+/* Szegélyek */
+h4, .border-left, .special li, .edu {
+    border-color: var(--border-color) !important;
+}
+
+/* 2. KÖRÖK (Fejléc alatt) */
+.special li {
+    color: var(--text-main) !important;
+    border-color: var(--accent-decoration) !important;
+}
+.special .pointer, .special .pointer:before {
+    background-color: var(--accent-decoration) !important;
+}
+
+/* 3. SKILLS (Pöttyök) */
+.ellipses li span {
+    background: var(--accent-decoration) !important;
+}
+.ellipses li span.grey {
+    background: var(--bg-element) !important;
+}
+
+/* 4. NYELVI KÖRÖK */
+path[data-id="s1"] { /* Üres rész */
+    fill: var(--bg-element) !important;
+    stroke: var(--bg-page) !important;
+}
+path[data-id="s0"] { /* Töltött rész */
+    fill: var(--accent-primary) !important;
+    stroke: var(--bg-page) !important;
+}
+
+/* 5. OKTATÁS (Timeline) */
+.edu:before { /* Nyíl */
+    border-color: transparent transparent var(--bg-panel) transparent !important;
+}
+.edu:after { /* Kör */
+    border-color: var(--accent-decoration) !important;
+    background: var(--accent-decoration) !important;
+}
+.edu_item:before { /* Pötty */
+    border-color: var(--bg-page) !important;
+    background: var(--accent-decoration) !important;
+}
+/* Opcionális: Doboz háttér */
+.edu {
+   /* Ha akarsz kártyaszerű hátteret az oktatásnál, vedd ki a kommentet: */
+   /* background-color: var(--bg-panel); */ 
+   /* padding: 10px; */
+}
+
+/* 6. TAPASZTALAT Évszámok */
+.experience .year {
+    color: var(--accent-primary) !important;
+}
+
+/* 7. HOBBI Ikonok */
+.int_icon {
+    border-color: var(--accent-primary) !important;
+}
+.int_icon i:before {
+    color: var(--text-main) !important;
+}
+/* 8. PIZZA CHARTS (Diagramok) - Nord Aurora színek */
+
+/* Az első szelet/oszlop (Piros) */
+[data-pie-id] > *:nth-child(5n+1), 
+[data-bar-id] > *:nth-child(5n+1), 
+[data-line-id] > *:nth-child(5n+1) {
+    color: var(--nord11) !important;
+}
+
+/* A második szelet/oszlop (Narancs) */
+[data-pie-id] > *:nth-child(5n+2), 
+[data-bar-id] > *:nth-child(5n+2), 
+[data-line-id] > *:nth-child(5n+2) {
+    color: var(--nord12) !important;
+}
+
+/* A harmadik szelet/oszlop (Sárga) */
+[data-pie-id] > *:nth-child(5n+3), 
+[data-bar-id] > *:nth-child(5n+3), 
+[data-line-id] > *:nth-child(5n+3) {
+    color: var(--nord13) !important;
+}
+
+/* A negyedik szelet/oszlop (Zöld) */
+[data-pie-id] > *:nth-child(5n+4), 
+[data-bar-id] > *:nth-child(5n+4), 
+[data-line-id] > *:nth-child(5n+4) {
+    color: var(--nord14) !important;
+}
+
+/* Az ötödik szelet/oszlop (Lila) */
+[data-pie-id] > *:nth-child(5n+5), 
+[data-bar-id] > *:nth-child(5n+5), 
+[data-line-id] > *:nth-child(5n+5) {
+    color: var(--nord15) !important;
+}
+
+/* 9. EXPERIENCE FIX (Évszámok mérete és elrendezése) */
+.experience .year {
+    font-size: 4rem !important; /* Kisebb méret (eredeti 10rem volt) */
+    line-height: 1 !important;
+    margin-right: 1rem !important;
+    opacity: 0.8 !important;
+    width: 5rem !important; /* Fix szélesség a számnak */
+    text-align: center !important;
+    float: left !important; /* Balra úsztatjuk */
+}
+
+.exp_data {
+    margin-top: 0 !important; /* Kivesszük a felesleges margót */
+    padding-top: 0.5rem !important;
+    overflow: hidden !important; /* Ez a lényeg: a szöveg nem folyik a szám alá */
+    white-space: normal !important; /* Engedjük a sortörést */
+}
+
+/* Mobilon még kompaktabb legyen */
+@media only screen and (max-width: 40em) {
+    .experience .year {
+        font-size: 3rem !important;
+        width: 100% !important; /* Teljes szélesség */
+        float: none !important; /* Egymás alá kerüljenek */
+        display: block !important;
+        text-align: left !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .exp_data {
+        padding-left: 0 !important;
+    }
+}
+
+/* 10. EXPERIENCE TEXT HIERARCHY (Hogy ne folyjon össze a szöveg) */
+
+/* A Pozíció (pl. IT Systems Integrator) - Legyen a legfeltűnőbb */
+.exp_data .role {
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: var(--nord8) !important; /* Nord Cyan szín */
+    margin-bottom: 0.1rem !important;
+    text-transform: uppercase; /* Opcionális: csupa nagybetű */
+    letter-spacing: 0.5px;
+}
+
+/* A Cég neve (pl. Open Source...) - Legyen félkövér */
+.exp_data .company {
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    color: var(--text-heading) !important; /* Címsor szín (fehér/sötétkék) */
+    margin-bottom: 0.2rem !important;
+}
+
+/* A Dátum - Legyen dőlt és halványabb */
+.exp_data .date {
+    font-style: italic !important;
+    font-size: 0.9rem !important;
+    color: var(--nord9) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* A leírás (folyó szöveg) térköze */
+.exp_data .desc {
+    margin-top: 0.5rem !important;
+    display: block;
+}

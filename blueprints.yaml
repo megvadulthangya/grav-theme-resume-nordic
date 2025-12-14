@@ -1,18 +1,97 @@
-name: Resume
-slug: resume
+name: Nord Resume
+slug: resume-nordic
 type: theme
-version: 1.3.1
-description: "Resume is a Grav adaptation of Fernando Báez resume PSD theme."
-icon: group
+version: 1.0.0
+description: "A modern, adaptive (Light/Dark) resume template using the Nord color palette. Automatically detects device preference."
+icon: user-secret
 author:
-  name: Team Grav
-  email: devs@getgrav.org
-  url: http://getgrav.org
-homepage: https://github.com/getgrav/grav-theme-resume
-demo: http://demo.getgrav.org/resume-skeleton
-keywords: resume, resume, theme, modern
-bugs: https://github.com/getgrav/grav-theme-resume/issues
+  name: Gyöngyösi Gábor
+  email: gyongyosigabor@gshoots.hu
+  url: https://github.com/megvadulthangya
+homepage: https://github.com/megvadulthangya/grav-theme-resume-nordic
+demo: https://nordic-skeleton.gshoots.hu
+keywords: resume, nord, theme, dark, light, adaptive, cv, modern, portfolio
+bugs: https://github.com/megvadulthangya/grav-theme-resume-nordic/issues
 license: MIT
 
 dependencies:
-  - { name: grav, version: '>=1.5.10' }
+  - { name: grav, version: '>=1.7.0' }
+
+form:
+  validation: loose
+  fields:
+    
+    # Külön fül a Téma beállításainak
+    tabs:
+      type: tabs
+      active: 1
+
+      features:
+        type: tab
+        title: Design Settings
+        
+        fields:
+          section_header:
+            type: section
+            title: Header & Avatar
+            underline: true
+          
+          gravatar_enabled:
+            type: toggle
+            label: Enable Gravatar
+            help: "Show profile picture from Gravatar based on email in Site configuration"
+            highlight: 1
+            default: 1
+            options:
+              1: PLUGIN_ADMIN.ENABLED
+              0: PLUGIN_ADMIN.DISABLED
+            validate:
+              type: bool
+
+          gravatar_size:
+            type: range
+            label: Profile Picture Size (px)
+            default: 210
+            min: 100
+            max: 400
+            step: 5
+            help: "Size of the circular profile image in the header"
+            append: px
+
+          section_footer:
+            type: section
+            title: Footer Settings
+            underline: true
+
+          footer_text:
+            type: text
+            label: Custom Footer Text
+            help: "Replaces the default copyright text. Leave empty for default."
+            placeholder: "Copyright © 2025 My Name"
+
+          hide_credits:
+             type: toggle
+             label: Hide Credits
+             help: "Hide the 'Powered by Grav & Nord Resume' text"
+             highlight: 0
+             default: 0
+             options:
+               1: PLUGIN_ADMIN.YES
+               0: PLUGIN_ADMIN.NO
+             validate:
+               type: bool
+
+      advanced:
+        type: tab
+        title: Advanced
+        fields:
+            dropdown.enabled:
+                type: toggle
+                label: Dropdown in Navbar
+                highlight: 1
+                default: 1
+                options:
+                  1: PLUGIN_ADMIN.ENABLED
+                  0: PLUGIN_ADMIN.DISABLED
+                validate:
+                  type: bool

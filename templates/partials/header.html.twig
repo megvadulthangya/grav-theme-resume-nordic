@@ -1,43 +1,68 @@
+{# Beolvassuk a téma beállításait #}
+{% set avatar_enabled = theme_config.gravatar_enabled %}
+{% set avatar_size = theme_config.gravatar_size|default(210) %}
+{% set grav_email = site.header.gravatar_email|default(site.gravatar_email) %}
+
 <div id="header">
     <div class="row">
-        <div class="large-3 columns">
+        {# 1. Oszlop: Profilkép (Konfigurálható) #}
+        <div class="large-3 columns text-center">
+            
+            {% if avatar_enabled and grav_email %}
+                <div style="margin-bottom: 0.5rem;">
+                    {# Dinamikus méretezés a blueprint beállítás alapján #}
+                    <img src="https://www.gravatar.com/avatar/{{ grav_email|trim|md5 }}?s={{ avatar_size * 2 }}" 
+                         alt="{{ site.title }}" 
+                         style="border-radius: 50%; width: {{ avatar_size }}px; height: {{ avatar_size }}px; border: 6px solid #4C566A; display: inline-block;" />
+                </div>
+            {% endif %}
+
             {% if site.title %}
-                <h2>{{ site.title }}</h2>
+                <h2 style="font-weight: bold; margin-top: 0.5rem;">{{ site.title }}</h2>
             {% endif %}   
             {% if site.description %}
                 <h6 class="light">{{ site.description }}</h6>
             {% endif %}
         </div>
+
+        {# 2. Oszlop: Cím (Site.yaml-ből jön) #}
         <div class="large-3 columns">
             <div class="row">
-                <div class="small-4 columns light2 italic">
-                    Address:
-                </div>
+                <div class="small-4 columns light2 italic">Address:</div>
                 <div class="small-8 columns border-left light2 ">
                     <ul class="no-bullet">
-                        {% for item in site.address %}
-                            <li>{{ item.line }}</li>
-                        {% endfor %}
+                        {% for item in site.address %}<li>{{ item.line }}</li>{% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
+
+        {# 3. Oszlop: Kapcsolat (Site.yaml-ből jön) #}
         <div class="large-3 columns">
             <div class="row">
-                <div class="small-4 columns light2 italic">
-                    Contact:
-                </div>
+                <div class="small-4 columns light2 italic">Contact:</div>
                 <div class="small-8 columns border-left light2">
                     <ul class="no-bullet">
                         {% for item in site.contact %}
-                            <li>{{ item.line }}</li>
+                            <li>
+                                {% if item.url %}
+                                    <a href="{{ item.url }}" {% if item.target %}target="{{ item.target }}"{% endif %} style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#88C0D0'" onmouseout="this.style.color='inherit'">
+                                        {% if item.icon %}<i class="fa fa-{{ item.icon }}"></i> {% endif %}
+                                        {{ item.text }}
+                                    </a>
+                                {% else %}
+                                    {{ item.line }}
+                                {% endif %}
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
+
+        {# 4. Oszlop: Weboldal #}
         <div class="large-2 columns text-right italic website">
-            <a href="http://{{ site.website }}">{{ site.website }}</a>
+            <a href="http://{{ site.website }}" target="_blank">{{ site.website }}</a>
         </div>
     </div>
 </div>
