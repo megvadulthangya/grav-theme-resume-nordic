@@ -3,11 +3,17 @@
 
   {{ module.content|raw }}
 
+  {# 3-as csoportokba rendezi az elemeket (ez a batch) #}
   {% for row in module.header.specialities|batch(3) %}
   <ul class="inline-list special {% if loop.first %}first{% endif %} {% if loop.last %}last{% endif %}">
     {% for item in row %}
     <li {% if item.animation %}class="animated {{ item.animation }}{% endif %}">
-      <i class="fi-{{ item.icon }}"></i>
+      
+      {# --- ITT A MÓDOSÍTÁS --- #}
+      {# Régi: <i class="fi-{{ item.icon }}"></i> #}
+      {# Új: FontAwesome 7 szabvány #}
+      <i class="fa-solid fa-{{ item.icon }}"></i>
+      
       <div class="pointer hide-for-small-only {% if loop.index == 2 %}second{% endif %}"></div>
       <div class="desc">{{ item.text }}</div>
     </li>
