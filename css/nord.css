@@ -259,3 +259,44 @@ path[data-id="s0"] { /* Töltött rész */
     margin-top: 0.5rem !important;
     display: block;
 }
+
+
+/* --- FONT AWESOME 7 FIXES (CENTERING & SIZING) --- */
+
+/* 1. HOBBIK (Interests) JAVÍTÁSA */
+.int_icon {
+    /* Bekapcsoljuk a Flexboxot a szülő dobozon */
+    display: flex !important;
+    justify-content: center !important; /* Vízszintes közép */
+    align-items: center !important;     /* Függőleges közép */
+    
+    /* Ha a régi CSS eltolta volna paddinggal, azt nullázzuk */
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+
+/* Itt állíthatod a Hobbik ikonméretét, ha túl kicsi/nagy */
+.int_icon i {
+    font-size: 2.2rem !important; /* Állítsd nagyobbra/kisebbre ízlés szerint */
+    margin: 0 !important;         /* Törlünk minden felesleges margót */
+}
+
+
+/* 2. SZPECIALITÁSOK (Specialities) JAVÍTÁSA */
+ul.special li i {
+    /* Mivel itt maga az 'i' elem a kör, azt tesszük flex konténerré */
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    /* Nullázzuk a régi eltolásokat */
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+
+/* Itt állíthatod a Specialitások ikonméretét */
+ul.special li i::before {
+    /* FontAwesome néha ::before elemet használ, ennek a méretét állítjuk */
+    font-size: 2rem !important; /* Próbálgasd: 1.8rem vagy 2.5rem */
+    vertical-align: middle !important;
+}
