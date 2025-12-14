@@ -261,42 +261,39 @@ path[data-id="s0"] { /* Töltött rész */
 }
 
 
-/* --- FONT AWESOME 7 FIXES (CENTERING & SIZING) --- */
+/* --- FONT AWESOME 7 FINAL FIXES --- */
 
-/* 1. HOBBIK (Interests) JAVÍTÁSA */
+/* 1. HOBBIK (Interests) BEÁLLÍTÁSAI */
 .int_icon {
-    /* Bekapcsoljuk a Flexboxot a szülő dobozon */
     display: flex !important;
-    justify-content: center !important; /* Vízszintes közép */
-    align-items: center !important;     /* Függőleges közép */
-    
-    /* Ha a régi CSS eltolta volna paddinggal, azt nullázzuk */
+    justify-content: center !important;
+    align-items: center !important;
     padding: 0 !important;
     line-height: 1 !important;
 }
 
-/* Itt állíthatod a Hobbik ikonméretét, ha túl kicsi/nagy */
 .int_icon i {
-    font-size: 2.2rem !important; /* Állítsd nagyobbra/kisebbre ízlés szerint */
-    margin: 0 !important;         /* Törlünk minden felesleges margót */
+    /* ITT ÁLLÍTSD A HOBBIK MÉRETÉT! */
+    /* Ha túl nagy volt, vedd lejjebb (pl. 1.8rem vagy 2rem) */
+    font-size: 2rem !important; 
+    margin: 0 !important;
 }
 
 
 /* 2. SZPECIALITÁSOK (Specialities) JAVÍTÁSA */
 ul.special li i {
-    /* Mivel itt maga az 'i' elem a kör, azt tesszük flex konténerré */
     display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
-    
-    /* Nullázzuk a régi eltolásokat */
     padding: 0 !important;
     line-height: 1 !important;
+    
+    /* ITT ÁLLÍTSD A SPECIALITÁSOK MÉRETÉT! */
+    /* Mivel ez most "malhapici", toljuk fel 3rem-re vagy 3.5rem-re! */
+    font-size: 3.5rem !important; 
 }
 
-/* Itt állíthatod a Specialitások ikonméretét */
+/* Biztonsági játék: az öröklődés miatt ezt most "inherit"-re rakjuk */
 ul.special li i::before {
-    /* FontAwesome néha ::before elemet használ, ennek a méretét állítjuk */
-    font-size: 2rem !important; /* Próbálgasd: 1.8rem vagy 2.5rem */
-    vertical-align: middle !important;
+    font-size: inherit !important;
 }
