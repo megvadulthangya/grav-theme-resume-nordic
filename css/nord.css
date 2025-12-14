@@ -261,9 +261,9 @@ path[data-id="s0"] { /* Töltött rész */
 }
 
 
-/* --- FONT AWESOME 7 FINAL FIXES --- */
+/* --- FONT AWESOME 7 FINAL POLISH --- */
 
-/* 1. HOBBIK (Interests) BEÁLLÍTÁSAI */
+/* 1. HOBBIK (Interests) JAVÍTÁSA */
 .int_icon {
     display: flex !important;
     justify-content: center !important;
@@ -273,33 +273,34 @@ path[data-id="s0"] { /* Töltött rész */
 }
 
 .int_icon i {
-    /* ITT ÁLLÍTSD A HOBBIK MÉRETÉT! */
-    /* Ha túl nagy volt, vedd lejjebb (pl. 1.8rem vagy 2rem) */
-    font-size: 2rem !important; 
+    font-size: 2rem !important; /* Hobbi ikon méret (maradt) */
     margin: 0 !important;
+    
+    /* OPTIKAI JAVÍTÁS: */
+    /* Ez a sor húzza feljebb az ikont 4 pixellel. */
+    /* Ha még mindig alacsony, írd át -6px-re! */
+    transform: translateY(-4px) !important; 
 }
 
 
 /* 2. SZPECIALITÁSOK (Specialities) JAVÍTÁSA */
 ul.special li i {
-    /* 1. FLEXBOX: Hogy az ikon a kör közepén legyen */
+    /* Pozicionálás (Középre + Test) */
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     
-    /* 2. A "TEST" VISSZAADÁSA (Ez hiányzott!) */
-    /* Fix méretet adunk a körnek, hogy ne essen össze */
+    /* A kör mérete (Maradt 6rem, hogy szép nagy legyen) */
     width: 6rem !important;   
     height: 6rem !important;
-    border-radius: 50% !important; /* Hogy biztosan kör legyen */
+    border-radius: 50% !important;
     
-    /* 3. POZICIONÁLÁS */
-    /* 0 auto = középre vízszintesen */
-    /* 1.5rem = alulra hagyunk helyet a kék pöttynek/vonalnak */
+    /* Külső igazítás (Hely a kék pöttynek alul) */
     margin: 0 auto 1.5rem auto !important;
     
-    /* 4. IKON MÉRETE (A körön belül) */
-    font-size: 3rem !important; 
+    /* MÉRET NÖVELÉSE: */
+    /* 3rem-ről 3.6rem-re emeltem. */
+    font-size: 3.6rem !important; 
     
     /* Nullázások */
     padding: 0 !important;
