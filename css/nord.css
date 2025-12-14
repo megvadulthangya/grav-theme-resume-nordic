@@ -282,18 +282,24 @@ path[data-id="s0"] { /* Töltött rész */
 
 /* 2. SZPECIALITÁSOK (Specialities) JAVÍTÁSA */
 ul.special li i {
-    display: inline-flex !important;
+    /* 1. BELSŐ IGAZÍTÁS (Az ikon legyen a kör közepén) */
+    display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    
+    /* 2. KÜLSŐ IGAZÍTÁS (Maga a kör legyen a doboz közepén) - EZ HIÁNYZOTT! */
+    margin: 0 auto !important; 
+    
+    /* Nullázások */
     padding: 0 !important;
     line-height: 1 !important;
     
-    /* ITT ÁLLÍTSD A SPECIALITÁSOK MÉRETÉT! */
-    /* Mivel ez most "malhapici", toljuk fel 3rem-re vagy 3.5rem-re! */
-    font-size: 3.5rem !important; 
+    /* 3. MÉRET (Specialities) */
+    /* Próbáld meg a 3rem-et. Ha túl nagy, vedd lejjebb 2.5rem-re */
+    font-size: 3rem !important; 
 }
 
-/* Biztonsági játék: az öröklődés miatt ezt most "inherit"-re rakjuk */
+/* Biztonsági tartalék */
 ul.special li i::before {
     font-size: inherit !important;
 }
