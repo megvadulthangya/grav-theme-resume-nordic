@@ -24,11 +24,10 @@ form:
         title: Avatar Settings
         underline: true
     
-    # --- ÚJ MEZŐ: FÁJL FELTÖLTÉS ---
     custom_avatar_image:
       type: file
       label: Custom Local Avatar
-      help: "Tölts fel egy saját képet, ha nem akarsz Gravatart használni."
+      help: "Upload your own profile picture here. Overrides Gravatar."
       destination: 'theme://assets'
       multiple: false
       accept:
@@ -37,8 +36,8 @@ form:
     gravatar_email:
         type: email
         label: Gravatar Email
-        help: "Ha nincs helyi kép feltöltve, ezt az emailt használja a Gravatarhoz."
-        placeholder: "pelda@gmail.com"
+        help: "Used for Gravatar if no local image is uploaded. Leave empty to use site default."
+        placeholder: "example@gmail.com"
 
     gravatar_enabled:
         type: toggle
@@ -71,8 +70,8 @@ form:
     footer_text:
         type: text
         label: Custom Footer Name
-        help: "A dátum (© 2025) automatikus! Ide csak a nevet/cégnevet írd."
-        placeholder: "Pl: Saját Cég Kft."
+        help: "Date (© 2025) is automatic. Enter name/company only. Defaults to Site Author."
+        placeholder: "e.g. My Company Ltd."
 
     hide_credits:
         type: toggle
