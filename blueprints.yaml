@@ -24,15 +24,25 @@ form:
         title: Avatar Settings
         underline: true
     
+    # --- ÚJ MEZŐ: FÁJL FELTÖLTÉS ---
+    custom_avatar_image:
+      type: file
+      label: Custom Local Avatar
+      help: "Tölts fel egy saját képet, ha nem akarsz Gravatart használni."
+      destination: 'theme://assets'
+      multiple: false
+      accept:
+        - image/*
+    
     gravatar_email:
         type: email
         label: Gravatar Email
-        help: "Override the global site email for the profile picture. If empty, the site default is used."
-        placeholder: "example@gmail.com"
+        help: "Ha nincs helyi kép feltöltve, ezt az emailt használja a Gravatarhoz."
+        placeholder: "pelda@gmail.com"
 
     gravatar_enabled:
         type: toggle
-        label: Enable Gravatar
+        label: Enable Avatar Area
         highlight: 1
         default: 1
         options:
@@ -48,7 +58,6 @@ form:
         min: 50
         max: 500
         step: 10
-        help: "Diameter of the profile picture in pixels. (Default: 200px)"
         validate:
           min: 50
           max: 500
@@ -62,8 +71,8 @@ form:
     footer_text:
         type: text
         label: Custom Footer Name
-        help: "The date (© 2025) is automatic! Enter only your Name or Company. If empty, 'Site Title' is used."
-        placeholder: "e.g. My Company Ltd."
+        help: "A dátum (© 2025) automatikus! Ide csak a nevet/cégnevet írd."
+        placeholder: "Pl: Saját Cég Kft."
 
     hide_credits:
         type: toggle

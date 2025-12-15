@@ -1,24 +1,36 @@
 {# Beolvassuk a téma beállításait #}
 {% set avatar_enabled = theme_config.gravatar_enabled %}
-{% set avatar_size = theme_config.gravatar_size|default(210) %}
+{% set avatar_size = theme_config.gravatar_size|default(200) %}
 
-{# --- ITT VOLT A HIBA! JAVÍTVA: --- #}
-{# 1. Megnézzük a Téma Configot (Admin). 2. Ha üres, megnézzük a Site Configot (site.yaml) #}
+{# --- OKOS LOGIKA: Helyi kép VS Gravatar --- #}
+
+{# 1. Megnézzük, töltött-e fel helyi képet #}
+{% set local_image = theme_config.custom_avatar_image|first %}
+
+{# 2. Gravatar email beállítása (tartalék) #}
 {% set grav_email = theme_config.gravatar_email ?: site.author.email %}
-
 
 <div id="header">
     <div class="row">
-        {# 1. Oszlop: Profilkép (Konfigurálható) #}
+        {# 1. Oszlop: Profilkép #}
         <div class="large-3 columns text-center">
            
-            {# Csak akkor rajzoljuk ki, ha engedélyezve van ÉS van email cím #}
-            {% if avatar_enabled and grav_email %}
+            {% if avatar_enabled %}
                 <div style="margin-bottom: 0.5rem;">
-                    {# A grav_email változót használjuk, ami már a jó sorrendben van kiválasztva #}
-                    <img src="https://www.gravatar.com/avatar/{{ grav_email|trim|md5 }}?s={{ avatar_size * 2 }}" 
-                         alt="{{ site.title }}" 
-                         style="border-radius: 50%; width: {{ avatar_size }}px; height: {{ avatar_size }}px; border: 6px solid #4C566A; display: inline-block;" />
+                    
+                    {# A) HELYI KÉP MEGJELENÍTÉSE #}
+                    {% if local_image %}
+                        <img src="{{ url('theme://assets/' ~ local_image.name) }}" 
+                             alt="{{ site.title }}" 
+                             style="border-radius: 50%; width: {{ avatar_size }}px; height: {{ avatar_size }}px; border: 6px solid #4C566A; display: inline-block; object-fit: cover;" />
+                    
+                    {# B) GRAVATAR MEGJELENÍTÉSE (Ha nincs helyi kép, de van email) #}
+                    {% elseif grav_email %}
+                        <img src="https://www.gravatar.com/avatar/{{ grav_email|trim|md5 }}?s={{ avatar_size * 2 }}" 
+                             alt="{{ site.title }}" 
+                             style="border-radius: 50%; width: {{ avatar_size }}px; height: {{ avatar_size }}px; border: 6px solid #4C566A; display: inline-block;" />
+                    {% endif %}
+
                 </div>
             {% endif %}
 
@@ -30,7 +42,7 @@
             {% endif %}
         </div>
 
-        {# 2. Oszlop: Cím (Site.yaml-ből jön) #}
+        {# 2. Oszlop: Cím #}
         <div class="large-3 columns">
             <div class="row">
                 <div class="small-4 columns light2 italic">Address:</div>
@@ -42,7 +54,7 @@
             </div>
         </div>
 
-        {# 3. Oszlop: Kapcsolat (Site.yaml-ből jön) #}
+        {# 3. Oszlop: Kapcsolat #}
         <div class="large-3 columns">
             <div class="row">
                 <div class="small-4 columns light2 italic">Contact:</div>
