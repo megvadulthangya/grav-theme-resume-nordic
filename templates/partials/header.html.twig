@@ -5,8 +5,8 @@
 {# --- AVATAR LOGIC PRIORITY --- #}
 {# 1. Custom Uploaded File #}
 {% set local_image = theme_config.custom_avatar_image|first %}
-{# 2. Gravatar Email (Theme config or Global site config) #}
-{% set grav_email = theme_config.gravatar_email ?: site.author.email %}
+{# 2. Gravatar Email (CSAK akkor, ha a Témában külön beírták!) #}
+{% set grav_email = theme_config.gravatar_email %}
 {# 3. Default Fallback Image (Lars) #}
 {% set default_image = 'default-avatar.jpg' %}
 
