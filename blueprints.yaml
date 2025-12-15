@@ -32,7 +32,7 @@ form:
                 title: Avatar Settings
                 underline: true
             
-            # --- EZ AZ ÚJ MEZŐ, HOGY NE KELLJEN FÁJLT SZERKESZTENI ---
+            # --- EZT A MEZŐT KERESI A TEMPLATE ---
             gravatar_email:
               type: email
               label: Gravatar Email

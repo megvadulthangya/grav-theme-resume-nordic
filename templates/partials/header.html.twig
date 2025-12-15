@@ -1,16 +1,21 @@
 {# Beolvassuk a téma beállításait #}
 {% set avatar_enabled = theme_config.gravatar_enabled %}
 {% set avatar_size = theme_config.gravatar_size|default(210) %}
-{% set grav_email = site.header.gravatar_email|default(site.gravatar_email) %}
+
+{# --- ITT VOLT A HIBA! JAVÍTVA: --- #}
+{# 1. Megnézzük a Téma Configot (Admin). 2. Ha üres, megnézzük a Site Configot (site.yaml) #}
+{% set grav_email = theme_config.gravatar_email ?: site.author.email %}
+
 
 <div id="header">
     <div class="row">
         {# 1. Oszlop: Profilkép (Konfigurálható) #}
         <div class="large-3 columns text-center">
-            
+           
+            {# Csak akkor rajzoljuk ki, ha engedélyezve van ÉS van email cím #}
             {% if avatar_enabled and grav_email %}
                 <div style="margin-bottom: 0.5rem;">
-                    {# Dinamikus méretezés a blueprint beállítás alapján #}
+                    {# A grav_email változót használjuk, ami már a jó sorrendben van kiválasztva #}
                     <img src="https://www.gravatar.com/avatar/{{ grav_email|trim|md5 }}?s={{ avatar_size * 2 }}" 
                          alt="{{ site.title }}" 
                          style="border-radius: 50%; width: {{ avatar_size }}px; height: {{ avatar_size }}px; border: 6px solid #4C566A; display: inline-block;" />
