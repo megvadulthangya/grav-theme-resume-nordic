@@ -1,3 +1,13 @@
+<div style="background: yellow; color: black; border: 5px solid red; padding: 20px; text-align: left; font-weight: bold; font-family: monospace; z-index: 9999; position: relative;">
+    <h3>🕵️‍♂️ LARS KERESÉSE</h3>
+    1. Avatar Enabled értéke: [{{ theme_config.gravatar_enabled }}] (Ha üres, az a baj!)<br>
+    2. Gravatar Email: [{{ theme_config.gravatar_email }}]<br>
+    3. Helyi kép: [{{ theme_config.custom_avatar_image|first.name }}]<br>
+    4. Lars URL: [{{ url('theme://assets/default-avatar.jpg') }}]<br>
+    <br>
+    <strong>KÉP TESZT (Feltétel nélkül):</strong><br>
+    <img src="{{ url('theme://assets/default-avatar.jpg') }}" style="width: 100px; height: 100px; border: 3px solid blue;">
+</div>
 {# Load Theme Config #}
 {% set avatar_enabled = theme_config.gravatar_enabled %}
 {% set avatar_size = theme_config.gravatar_size|default(200) %}
