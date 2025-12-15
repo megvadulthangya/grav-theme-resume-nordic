@@ -2,7 +2,7 @@ name: Nord Resume
 slug: resume-nordic
 type: theme
 version: 1.0.0
-description: "A modern, adaptive resume template using the Nord color palette."
+description: "A modern resume theme."
 icon: user-secret
 author:
   name: Gyöngyösi Gábor
@@ -19,64 +19,55 @@ dependencies:
 form:
   validation: loose
   fields:
-    tabs:
-      type: tabs
-      active: 1
+    section_avatar:
+        type: section
+        title: Avatar Settings
+        underline: true
+    
+    gravatar_email:
+        type: email
+        label: Gravatar Email
+        help: "Ide írd az email címed (ha üres, a site defaultot használja)"
+        placeholder: "pelda@gmail.com"
 
-      features:
-        type: tab
-        title: Design Settings
-        fields:
-            section_avatar:
-                type: section
-                title: Avatar Settings
-                underline: true
-            
-            # --- EZT A MEZŐT KERESI A TEMPLATE ---
-            gravatar_email:
-              type: email
-              label: Gravatar Email
-              help: "Ide írd be az email címedet a képhez (ha üres, a globális beállítást használja)"
-              placeholder: "pelda@gmail.com"
+    gravatar_enabled:
+        type: toggle
+        label: Enable Gravatar
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool
 
-            gravatar_enabled:
-                type: toggle
-                label: Enable Gravatar
-                highlight: 1
-                default: 1
-                options:
-                  1: PLUGIN_ADMIN.ENABLED
-                  0: PLUGIN_ADMIN.DISABLED
-                validate:
-                  type: bool
+    gravatar_size:
+        type: range
+        label: Avatar Size (px)
+        default: 100
+        min: 50
+        max: 300
+        step: 10
+        validate:
+          type: number
 
-            gravatar_size:
-                type: range
-                label: Avatar Size (px)
-                default: 100
-                min: 50
-                max: 300
-                step: 10
-                validate:
-                  type: number
+    section_footer:
+        type: section
+        title: Footer Settings
+        underline: true
 
-            section_footer:
-                type: section
-                title: Footer Settings
-                underline: true
+    footer_text:
+        type: text
+        label: Custom Footer Text
+        placeholder: "Copyright © 2025"
 
-            footer_text:
-                type: text
-                label: Custom Footer Text
-                placeholder: "Copyright © 2025"
-
-            hide_credits:
-                type: toggle
-                label: Hide Credits
-                highlight: 0
-                default: 0
-                options:
-                  1: PLUGIN_ADMIN.YES
-                  0: PLUGIN_ADMIN.NO
-                validate:
-                  type: bool
+    hide_credits:
+        type: toggle
+        label: Hide Credits
+        highlight: 0
+        default: 0
+        options:
+          1: PLUGIN_ADMIN.YES
+          0: PLUGIN_ADMIN.NO
+        validate:
+          type: bool
