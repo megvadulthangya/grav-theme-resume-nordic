@@ -1,109 +1,108 @@
-Nord Resume Theme for Grav
+# Nord Resume Theme for Grav
 
-Nord Resume is a modern, privacy-focused adaptation of the classic Resume Theme. It has been re-engineered with the Nord color palette, automatic Dark/Light mode, and a local FontAwesome 7 icon system.
+![Nord Resume](thumbnail.jpg)
 
-Features
+**Nord Resume** is a modern, privacy-focused adaptation of the classic [Resume Theme](https://github.com/getgrav/grav-theme-resume). It has been completely re-engineered with the elegant [Nord color palette](https://www.nordtheme.com/), automatic Dark/Light mode, and a local FontAwesome 7 icon system.
 
-❄️ Nord Color Palette: Uses the official Nord colors for a consistent, arctic look.
+# Features
 
-🌓 Auto Dark/Light Mode: Automatically detects system preferences (prefers-color-scheme).
+* ❄️ **Nord Color Palette:** Uses the official Nord colors for a consistent, arctic elegance.
+* 🌓 **Auto Dark/Light Mode:** Automatically detects system preferences (`prefers-color-scheme`).
+* 🚀 **FontAwesome 7:** Upgraded icon system (v7.1.0) using **local assets** (no external CDN, fully GDPR compliant).
+* 🔧 **Configurable:** Admin Panel options for Gravatar, Footer text, and Credits.
+* 📱 **Fully Responsive:** Based on the Foundation framework.
+* **Classic Layouts:** Preserves the beloved layouts (Timeline, Skills, Specialities) of the original theme.
 
-🚀 FontAwesome 7: Upgraded icon system (v7.1.0) using local assets (GDPR compliant, no CDN).
+# Installation
 
-🔧 Configurable: Admin Panel options for Gravatar, Footer text, and Credits.
+The easiest way to get started is to use the **Skeleton** package (which includes Grav + Theme + Content). Download it from the [Skeleton Repository](https://github.com/megvadulthangya/grav-skeleton-resume-nordic-site).
 
-📱 Fully Responsive: Built on the Foundation framework.
+If you want to install **only the theme** into an existing Grav site:
 
-Classic Layouts: Preserves the Timeline, Skills, and Specialities layouts.
+## Manual Installation
 
-Installation
+1. Clone this repository into your `user/themes` directory:
+   ```bash
+   git clone [https://github.com/megvadulthangya/grav-theme-resume-nordic.git](https://github.com/megvadulthangya/grav-theme-resume-nordic.git) user/themes/resume-nordic
+````
 
-The easiest way to get started is to use the Skeleton package. Download it from the Skeleton Repository.
+2.  Enable the theme in your `user/config/system.yaml`:
+    ```yaml
+    pages:
+      theme: resume-nordic
+    ```
 
-If you want to install only the theme into an existing Grav site:
+> **NOTE:** This theme requires the [Grav](http://github.com/getgrav/grav), [Error](https://github.com/getgrav/grav-theme-error), and [Problems](https://github.com/getgrav/grav-plugin-problems) plugins.
 
-Manual Installation
+# Configuration
 
-Clone this repository into your user/themes directory:
+Unlike the original theme, Nord Resume is configurable via the **Grav Admin Panel**.
 
-git clone [https://github.com/megvadulthangya/grav-theme-resume-nordic.git](https://github.com/megvadulthangya/grav-theme-resume-nordic.git) user/themes/resume-nordic
+Go to **Themes \> Nord Resume** to configure:
 
+  * **Gravatar:** Enable/Disable, set Email, and adjust Size (slider).
+  * **Footer:** Custom copyright text.
+  * **Credits:** Show/Hide "Powered by" text.
+  * **Dropdown:** Enable/Disable menu dropdowns.
 
-Enable the theme in your user/config/system.yaml:
+Alternatively, you can edit `user/config/themes/resume-nordic.yaml`.
 
-pages:
-  theme: resume-nordic
+# Layouts & Content
 
+To use the theme's special features, you need to structure your Markdown content correctly.
 
-Note: This theme requires the Grav, Error, and Problems plugins.
+## Specialities
 
-Configuration
+Location: `pages/left/my-specialities/special.md`
 
-Nord Resume is configurable via the Grav Admin Panel. Go to Themes > Nord Resume to configure:
-
-Gravatar: Enable/Disable, set Email, and adjust Size.
-
-Footer: Custom copyright text.
-
-Credits: Show/Hide "Powered by" text.
-
-Dropdown: Enable/Disable menu dropdowns.
-
-Alternatively, you can edit user/config/themes/resume-nordic.yaml.
-
-Layouts & Content
-
-To use the theme's special features, ensure your Markdown content follows these structures.
-
-Specialities
-
-File: pages/left/my-specialities/special.md
-
+```markdown
 - icon: lightbulb
   text: Logo Design
   animation: fadeInDown
+```
 
+  * **icon**: Use modern [FontAwesome 7](https://fontawesome.com/search?o=r&m=free) names (e.g., `lightbulb`, `layer-group`).
+  * **animation**: [Animate.css](https://daneden.github.io/animate.css/) class.
 
-icon: Use modern FontAwesome 7 names (e.g., lightbulb, layer-group).
+## Skills
 
-animation: Any Animate.css class.
+Location: `pages/left/design-skills/skills.md`
 
-Skills
-
-File: pages/left/design-skills/skills.md
-
+```markdown
 - name: Adobe Photoshop
   level: 8
+```
 
+  * **level**: 1-8 (Visual dots).
 
-level: 1-8 (Visual dots).
+## Experience (Work History)
 
-Experience (Work History)
+Location: `pages/right/experience/experience.md`
 
-File: pages/right/experience/experience.md
-
+```markdown
 - date: 2018 - Present
   role: Senior Developer
   company: Tech Corp
   years: 5+
   description: "You can now use <b>HTML</b> tags here!"
+```
 
+## Hobbies and Interests
 
-Hobbies and Interests
+Location: `pages/right/hobbies-and-interests/interests.md`
 
-File: pages/right/hobbies-and-interests/interests.md
+**Important:** Use FontAwesome 7 icon names\!
 
+```markdown
 - icon: camera-retro
   text: Photography
   animation: fadeIn
 - icon: person-hiking
   text: Hiking
+```
 
+# Credits
 
-Credits
-
-Original Theme by Fernando Báez & Grav Team.
-
-Nord Adaptation by Gábor Gyöngyösi.
-
-Color Palette by Arctic Ice Studio.
+  * Original Theme by [Fernando Báez](https://www.behance.net/gallery/FREE-Resume-Template/15677411) & [Grav Team](https://github.com/getgrav/grav-theme-resume).
+  * Nord Adaptation by [Gábor Gyöngyösi](https://github.com/megvadulthangya).
+  * Color Palette by [Arctic Ice Studio](https://www.nordtheme.com/).
