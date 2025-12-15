@@ -44,11 +44,14 @@ form:
     gravatar_size:
         type: range
         label: Avatar Size (px)
-        default: 100
+        default: 200
         min: 50
-        max: 300
+        max: 500
         step: 10
+        help: "A kör átmérője pixelben. (Alap: 200px)"
         validate:
+          min: 50
+          max: 500
           type: number
 
     section_footer:
