@@ -3,16 +3,16 @@
         <div class="large-12 columns text-center">
             <div class="border"></div>
             <p>
-                {# Ha van egyedi szöveg az adminban, azt írja ki, ha nincs, az alapértelmezettet #}
-                {% if theme_config.footer_text %}
-                    {{ theme_config.footer_text|raw }}
-                {% else %}
-                    Copyright &copy; {{ "now"|date("Y") }} <strong>{{ site.title }}</strong>.
-                {% endif %}
+                {# 1. A DÁTUM (Ez mindig látszik) #}
+                Copyright &copy; {{ "now"|date("Y") }} 
+                
+                {# 2. A NÉV (Vagy az egyedi, vagy a Site Title) #}
+                {# A "?:" jel azt jelenti: ha az első üres, használd a másodikat #}
+                <strong>{{ theme_config.footer_text ?: site.title }}</strong>
                 
                 <br>
                 
-                {# Ha nincs elrejtve a credit #}
+                {# 3. CREDITS (Ha nincs elrejtve) #}
                 {% if not theme_config.hide_credits %}
                     <small>Powered by <a href="http://getgrav.org" target="_blank">Grav</a> & <a href="https://github.com/megvadulthangya/grav-theme-resume-nordic" target="_blank">Nord Resume</a>.</small>
                 {% endif %}
