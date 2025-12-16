@@ -1,0 +1,42 @@
+name: Release Theme Package
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release Tag (pl. v1.0.1)'
+        required: true
+        default: 'v1.0.1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Kód letöltése
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    # 2. Takarítás (Git fájlok és felesleges szemetek törlése)
+    - name: Cleanup Garbage
+      run: |
+        echo "🧹 Cleaning up..."
+        rm -rf .git .github .gitignore .editorconfig
+        # Ha van node_modules vagy egyéb fejlesztői cucc, azt is itt töröld
+
+    # 3. Csomagolás
+    - name: Create ZIP
+      run: |
+        echo "📦 Zipping Theme..."
+        # A fájlnév szabványos: grav-theme-[név]-[verzió].zip
+        zip -r -q grav-theme-resume-nordic-${{ inputs.tag }}.zip .
+
+    # 4. Feltöltés a Release-hez
+    - name: Upload to Release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ inputs.tag }}
+        file: grav-theme-resume-nordic-${{ inputs.tag }}.zip
+        overwrite: true
+        file_glob: true
+        body: "🧊 **Nord Resume Theme ${{ inputs.tag }}**\n\nThis is the standalone theme package. Install via Admin or unzip to `/user/themes/`."
