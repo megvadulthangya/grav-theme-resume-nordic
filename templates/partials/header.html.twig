@@ -69,13 +69,40 @@
                     <ul class="no-bullet">
                         {% for item in site.contact %}
                             <li>
+                                {# Ha a YAML-ben meg van adva URL, azt használjuk (ez volt az eredeti logika) #}
                                 {% if item.url %}
                                     <a href="{{ item.url }}" {% if item.target %}target="{{ item.target }}"{% endif %} style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#88C0D0'" onmouseout="this.style.color='inherit'">
                                         {% if item.icon %}<i class="fa fa-{{ item.icon }}"></i> {% endif %}
                                         {{ item.text }}
                                     </a>
+                                
+                                {# HA NINCS URL, AKKOR DETEKTÁLUNK (EZ AZ ÚJ RÉSZ!) #}
                                 {% else %}
-                                    {{ item.line }}
+                                
+                                    {# 1. EMAIL DETEKTÁLÁS (Ha van benne @ és pont) #}
+                                    {% if '@' in item.line and '.' in item.line %}
+                                        <a href="mailto:{{ item.line }}" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#88C0D0'" onmouseout="this.style.color='inherit'">
+                                            <i class="fa-solid fa-envelope" style="margin-right: 5px; width: 15px;"></i>{{ item.line }}
+                                        </a>
+
+                                    {# 2. TELEFON DETEKTÁLÁS (Ha + jellel vagy számmal kezdődik) #}
+                                    {% elseif item.line|trim|first == '+' or item.line|trim matches '/^[0-9]/' %}
+                                        {# A replace kiszedi a szóközöket a href-ből, hogy a telefon tárcsázni tudja #}
+                                        <a href="tel:{{ item.line|replace({' ': '', '-': '', '(': '', ')': ''}) }}" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#88C0D0'" onmouseout="this.style.color='inherit'">
+                                            <i class="fa-solid fa-phone" style="margin-right: 5px; width: 15px;"></i>{{ item.line }}
+                                        </a>
+
+                                    {# 3. TWITTER / SOCIAL (Ha @-al kezdődik, de nem email) #}
+                                    {% elseif item.line|trim|first == '@' %}
+                                        <a href="https://twitter.com/{{ item.line|replace({'@': ''}) }}" target="_blank" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#88C0D0'" onmouseout="this.style.color='inherit'">
+                                            <i class="fa-brands fa-twitter" style="margin-right: 5px; width: 15px;"></i>{{ item.line }}
+                                        </a>
+
+                                    {# 4. EGYÉB SZÖVEG (Ha semmi fenti nem igaz) #}
+                                    {% else %}
+                                        {{ item.line }}
+                                    {% endif %}
+                                    
                                 {% endif %}
                             </li>
                         {% endfor %}
