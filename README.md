@@ -135,3 +135,14 @@ correctly.
   [Gábor Gyöngyösi](https://github.com/megvadulthangya).
 - Color palette by
   [Arctic Ice Studio](https://www.nordtheme.com/).
+
+---
+
+<div align="center">
+
+**Is it cold out there?** ❄️  
+If this skeleton saved you hours of debugging dependency hell, consider warming me up with a coffee! ☕
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/rohambili)
+
+</div>
