@@ -1,4 +1,4 @@
-# Nord Resume Theme for Grav
+# Nord Resume Theme for Grav Dark/Light!
 
 ![Nord Resume](thumbnail.jpg)
 
