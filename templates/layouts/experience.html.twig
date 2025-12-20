@@ -5,19 +5,20 @@
 
   <div class="row experience">
     {% for item in module.header.experience %}
-    <div class="large-6 medium-6 small-12 columns {% if loop.last %}end{% endif %} {% if item.animation %}animated {{ item.animation }}{% endif %}">
+    {# VÁLTOZÁS: large-12 és full width kényszerítése #}
+    <div class="large-12 columns {% if loop.last %}end{% endif %} {% if item.animation %}animated {{ item.animation }}{% endif %}" 
+         style="width: 100% !important; float: none !important; display: block !important; clear: both !important; margin-bottom: 30px;">
       
-      {# Évszám (pl. 4+, 6) #}
       <div class="year">{{ item.years }}</div>
       
       <div class="exp_data">
         <div class="date">{{ item.date }}</div>
-        <div class="role">{{ item.role }}</div>
-        <div class="company">{{ item.company }}</div>
+        <div class="role" style="font-weight: bold; color: #88C0D0;">{{ item.role }}</div>
+        <div class="company" style="font-weight: bold;">{{ item.company }}</div>
         
-        {# Leírás megjelenítése HTML formázással #}
+        {# HIÁNYZOTT: Leírás megjelenítése #}
         {% if item.description %}
-            <div class="desc">
+            <div class="desc" style="margin-top: 10px; font-size: 0.95em; line-height: 1.5;">
                 {{ item.description|raw }}
             </div>
         {% endif %}

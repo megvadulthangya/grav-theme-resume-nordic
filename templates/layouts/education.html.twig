@@ -1,19 +1,28 @@
 <div class="avoid_pagebreak">
-<h4>{{ module.header.title }}</h4>
+    <h4>{{ module.header.title }}</h4>
 
-{{ module.content|raw }}
+    {{ module.content|raw }}
 
-{% if module.header.education %}
-<div class="edu_surround">
-  <div class="edu animated">
-    {% for item in module.header.education %}
-      <div class="edu_item">
-        <div class="date">{{ item.date }}</div>
-        <div class="topic">{{ item.topic }}</div>
-        <div class="school">{{ item.school }}</div>
+    {% if module.header.education %}
+    <div class="edu_surround">
+      <div class="edu animated">
+        {% for item in module.header.education %}
+          {# Inline style a dobozméret javítására #}
+          <div class="edu_item" style="height: auto !important; min-height: 0 !important; padding-bottom: 20px; margin-bottom: 20px;">
+            <div class="date">{{ item.date }}</div>
+            <div class="topic" style="font-weight: bold;">{{ item.topic }}</div>
+            <div class="school">{{ item.school }}</div>
+            
+            {# HIÁNYZOTT: Leírás megjelenítése (színkód nélkül, hogy Light módban is jó legyen) #}
+            {% if item.description %}
+            <div class="description" style="margin-top: 8px; font-size: 0.9em; opacity: 0.9; border-left: 2px solid #88C0D0; padding-left: 10px;">
+                {{ item.description|raw }}
+            </div>
+            {% endif %}
+    
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
-  </div>
-</div>
-{% endif %}
+    </div>
+    {% endif %}
 </div>
