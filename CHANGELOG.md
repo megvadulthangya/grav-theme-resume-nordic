@@ -1,3 +1,14 @@
+# v1.0.1
+## 12/20/2025
+
+1. [](#bugfix)
+    * Fixed missing description text in Education and Experience templates
+    * Fixed text visibility issues in Light Mode (removed hardcoded colors)
+    * Fixed rating dots rendering in the second column of Skills module
+2. [](#improved)
+    * Switched Experience section to full-width layout for better readability
+    * Improved mobile responsiveness for timeline items
+
 # v1.0.0
 ## 12/15/2025
 
